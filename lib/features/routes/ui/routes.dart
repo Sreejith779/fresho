@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fresho/features/homePage/bloc/home_bloc.dart';
 
 import '../../cart/ui/cartPage.dart';
 import '../../categoris/ui/categoies.dart';
 import '../../homePage/ui/homePage.dart';
-import '../../wishList/bloc/ui/wishList.dart';
+import '../../wishList/ui/wishList.dart';
+
 
 
 class RoutesPage extends StatefulWidget {
@@ -14,6 +16,7 @@ class RoutesPage extends StatefulWidget {
 }
 
 class _RoutesPageState extends State<RoutesPage> {
+   HomeBloc homeBloc = HomeBloc();
    int isSelected = 0;
    static final List _tabs = [
      HomePage(),
