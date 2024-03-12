@@ -20,7 +20,7 @@ WishListBloc wishListBloc = WishListBloc();
     homeBloc.emit(WishListedActionState());
     super.initState();
   }
-
+//
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<WishListBloc, WishListState>(
