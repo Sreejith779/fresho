@@ -1,3 +1,3 @@
 import '../features/homePage/model/productModel.dart';
 
-List<ProductModel>wishList=[];
+List<ProductModel>wishListItems=[];

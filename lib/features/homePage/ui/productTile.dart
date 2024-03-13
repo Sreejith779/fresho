@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:fresho/dataModel/cartListItem.dart';
+import 'package:fresho/dataModel/wishList.dart';
 import 'package:fresho/features/homePage/bloc/home_bloc.dart';
 
 import '../model/productModel.dart';
@@ -29,7 +31,7 @@ class _ProductTileState extends State<ProductTile> {
                 image: DecorationImage(
                   image: NetworkImage(widget.productModel.image),
                   fit: BoxFit.contain,
-                  filterQuality: FilterQuality.low,
+                  filterQuality: FilterQuality.high,
                 ),
               ),
             ),
@@ -59,17 +61,22 @@ class _ProductTileState extends State<ProductTile> {
                 ),
                 Row(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.green.withOpacity(0.9),
-                          borderRadius: BorderRadius.circular(8)
-                      ),
-                 width: 100,
-                      height: 30,
-                      child: Center(child: Text("Add To Cart",
-                        style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),)),),
+                    InkWell(onTap: (){
+                      widget.homeBloc.add(CartButtonEvent(clickedProduct:widget.productModel ));
+                    },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.green.withOpacity(0.9),
+                            borderRadius: BorderRadius.circular(8)
+                        ),
+                                       width: 100,
+                        height: 30,
+                        child: Center(child: Text("Add To Cart",
+                          style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),)),),
+                    ),
                     IconButton(onPressed: (){
-                      widget.homeBloc.add(WishListButtonEvent());
+                      widget.homeBloc.add(WishListButtonEvent(
+                          clickedProduct: widget.productModel));
                     }, icon: Icon(Icons.favorite,color: Colors.black.withOpacity(0.5),))
                   ],
                 )

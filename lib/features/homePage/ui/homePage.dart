@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fresho/dataModel/wishList.dart';
 import 'package:fresho/features/homePage/bloc/home_bloc.dart';
 import 'package:fresho/features/homePage/ui/productTile.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -34,7 +36,13 @@ class _HomePageState extends State<HomePage> {
       builder: (context, state) {
         switch (state.runtimeType) {
           case HomeLoadingState:
-            return const Center(child: CircularProgressIndicator());
+            return Skeletonizer(
+              ignoreContainers: false,
+              enabled : true,
+              child: GridView.count(
+                crossAxisCount: 2,
+                  children: List.generate(6, (index) => Container())),
+            );
             break;
           case HomeLoadedState:
             final loadedState = state as HomeLoadedState;
@@ -59,7 +67,9 @@ class _HomePageState extends State<HomePage> {
                                 )
                               ],
                             ),
-                          ))),
+                          )
+                  )
+              ),
             ));
 
           default:

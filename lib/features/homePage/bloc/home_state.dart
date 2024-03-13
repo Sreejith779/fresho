@@ -13,4 +13,4 @@ final List<ProductModel>products = groceryData.map((e) =>
 }
 
  class WishListedActionState extends HomeActionState{}
- class CartedtedActionState extends HomeActionState{}
+ class CartedActionState extends HomeActionState{}
