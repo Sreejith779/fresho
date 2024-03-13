@@ -6,7 +6,7 @@ abstract class HomeActionState extends HomeState {}
 
 class HomeInitial extends HomeState {}
 class HomeLoadingState extends HomeState{
-}
+} //
 class HomeLoadedState extends HomeState{
 final List<ProductModel>products = groceryData.map((e) =>
     ProductModel(name: e["name"], kg: e["kg"], price: e["price"], image: e['image'])).toList();
