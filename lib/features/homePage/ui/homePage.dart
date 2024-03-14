@@ -31,6 +31,8 @@ class _HomePageState extends State<HomePage> {
         if (state is WishListedActionState) {
           ScaffoldMessenger.of(context)
               .showSnackBar(const SnackBar(content: Text("item wishlisted")));
+        }else if(state is CartedActionState){
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Item added")));
         }
       },
       builder: (context, state) {
@@ -47,30 +49,37 @@ class _HomePageState extends State<HomePage> {
           case HomeLoadedState:
             final loadedState = state as HomeLoadedState;
             return Scaffold(
-                body: Container(
-              margin: const EdgeInsets.all(10),
-              child: GridView.count(
-                  crossAxisCount: 2,
-                  children: List.generate(
-                      loadedState.products.length,
-                      (index) => Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Colors.grey.withOpacity(0.1),
-                            ),
-                            margin: EdgeInsets.all(10),
-                            child: Column(
-                              children: [
-                                ProductTile(
-                                  productModel: loadedState.products[index],
-                                  homeBloc: homeBloc,
+                body: Column(
+                  children: [
+
+                    Expanded(
+                      child: Container(
+                                    margin: const EdgeInsets.all(10),
+                                    child: GridView.count(
+                        crossAxisCount: 2,
+                        children: List.generate(
+                            loadedState.products.length,
+                            (index) => Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    color: Colors.grey.withOpacity(0.1),
+                                  ),
+                                  margin: EdgeInsets.all(10),
+                                  child: Column(
+                                    children: [
+                                      ProductTile(
+                                        productModel: loadedState.products[index],
+                                        homeBloc: homeBloc,
+                                      )
+                                    ],
+                                  ),
                                 )
-                              ],
-                            ),
-                          )
-                  )
-              ),
-            ));
+                        )
+                                    ),
+                                  ),
+                    ),
+                  ],
+                ));
 
           default:
             return const SizedBox(

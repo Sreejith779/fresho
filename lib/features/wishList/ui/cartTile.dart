@@ -70,7 +70,10 @@ class _CartTileState extends State<CartTile> {
                     child: Center(child: Text("Add To Cart",
                       style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),)),),
                   
-                  IconButton(onPressed: (){}, icon: Icon(Icons.delete_outline_outlined,color: Colors.orange,))
+                  IconButton(onPressed: (){
+                    widget.wishListBloc.add(WishListRemoveItem(productModel: widget.productModel));
+                  },
+                       icon: Icon(Icons.delete_outline_outlined,color: Colors.orange,))
 
                 ],
               )
