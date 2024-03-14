@@ -30,7 +30,11 @@ class _RoutesPageState extends State<RoutesPage> {
 
       appBar: AppBar(
         backgroundColor: Colors.deepPurple.withOpacity(0.8),
-        title: Text("Fresho App"),
+        title: Text("Fresho App",
+        style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w500
+        ),),
       ),
       bottomNavigationBar: NavigationBar(
         elevation: 0,
